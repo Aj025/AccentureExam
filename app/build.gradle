@@ -1,20 +1,34 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs.kotlin"
+    id "kotlin-parcelize"
 }
 
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
+
+
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion Apps.compileSdkVersion
+    buildToolsVersion Apps.buildToolsVersion
 
     defaultConfig {
-        applicationId "simple.program.accentureexam"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        applicationId Apps.applicationId
+        minSdkVersion Apps.minSdkVersion
+        targetSdkVersion Apps.targetSdkVersion
+        versionCode Apps.versionCode
+        versionName Apps.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding true
     }
 
     buildTypes {
@@ -33,13 +47,49 @@ android {
 }
 
 dependencies {
+    implementation Dependencies.kotlinStandardLibrary
+    implementation Dependencies.constraintLayout
+    implementation Dependencies.androidxCore
+    implementation Dependencies.appcompat
+    implementation Dependencies.androidMaterial
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // Testing
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.junitAndroid
+    androidTestImplementation Dependencies.espressoCore
+    androidTestImplementation Dependencies.coroutines_test
+    testImplementation Dependencies.coroutines_test
+    androidTestImplementation Dependencies.google_truth
+    testImplementation Dependencies.google_truth
+
+    // Glide for image caching
+    implementation Dependencies.glide
+    kapt Dependencies.glideCompiler
+
+    // View model
+    implementation Dependencies.fragmentKtx
+    implementation Dependencies.viewmodelKtx
+    implementation Dependencies.liveDataKtx
+
+    // Dagger Hilt
+    implementation Dependencies.dagger_hilt
+    kapt Dependencies.dagger_hilt_compiler
+
+    // Networking
+    implementation Dependencies.okhttpBom
+    implementation Dependencies.loggingInterceptor
+    implementation Dependencies.okhttp
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitConverterGson
+
+    // Navigation components
+    implementation Dependencies.navigationFragment
+    implementation Dependencies.navigationUi
+
+    // Room
+    api Dependencies.room_runtime
+    kapt Dependencies.room_compiler
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation Dependencies.room_ktx
+    implementation Dependencies.coroutineCore
 }
