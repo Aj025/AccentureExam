@@ -7,23 +7,4 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-
-    <color name="app_red">#f44336</color>
-    <color name="app_green">#2EA44F</color>
-    <color name="app_primary">#007CCB</color>
-    <color name="app_secondary">#15ABFF</color>
-    <color name="buttonDisabledState">#646464</color>
-
-    <color name="appTextColorNormal">#292929</color>
-    <color name="appTextColorOffset">#ECECEC</color>
-    <color name="appEditTextFontColor">#252525</color>
-    <color name="appEditTextColorHint">#818181</color>
-    <color name="appTextHyperLinkColor">#007CCB</color>
-
-
-
-    <color name="semiTransparent">#40000000</color>
-    <color name="coloTextHint">#6B6B6B</color>
-    <color name="appEditTextBackground">#ECECEC</color>
 </resources>
